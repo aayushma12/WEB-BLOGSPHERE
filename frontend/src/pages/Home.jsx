@@ -36,45 +36,47 @@ function Home() {
   if (loading) return <div className="text-center p-4">Loading...</div>;
 
   return (
-    <Container>
-      <div className="py-8 bg-lightBlue">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-darkBlue">Latest Blog Posts</h1>
-          {userData && (
-            <button
-              onClick={() => navigate('/add-post')}
-              className="bg-blue text-lightBlue px-4 py-2 rounded-lg hover:bg-deepBlue"
-            >
-              Add New Post
-            </button>
+    <div className="w-full min-h-screen p-0 m-0">
+      <Container className="w-full p-0 m-0">
+        <div className="w-full py-20 min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-pink-400 via-white to-red-500">
+          <div className="w-full max-w-4xl text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-6">Latest Blog Posts</h1>
+            {userData && (
+              <button
+                onClick={() => navigate('/add-post')}
+                className="bg-pink-500 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:bg-pink-600 transition-all"
+              >
+                Add New Post
+              </button>
+            )}
+          </div>
+
+          <div className="w-full max-w-md mb-10 px-4">
+            <input
+              type="text"
+              placeholder="Search posts by title..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-3 rounded-lg text-gray-800 shadow-inner focus:ring-2 focus:ring-pink-400 focus:outline-none"
+            />
+          </div>
+
+          {filteredPosts.length === 0 ? (
+            <p className="text-center text-gray-700">No posts found</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full px-4">
+              {filteredPosts.map(post => (
+                <PostCard 
+                  key={post.id} 
+                  post={post} 
+                  onDelete={handlePostDelete}
+                />
+              ))}
+            </div>
           )}
         </div>
-
-        <div className="mb-8">
-          <input
-            type="text"
-            placeholder="Search posts by title..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-          />
-        </div>
-
-        {filteredPosts.length === 0 ? (
-          <p className="text-center text-gray-500">No posts found</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredPosts.map(post => (
-              <PostCard 
-                key={post.id} 
-                post={post} 
-                onDelete={handlePostDelete}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
 
