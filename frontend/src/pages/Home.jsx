@@ -42,13 +42,14 @@ function Home() {
           <div className="w-full max-w-4xl text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-800 mb-6">Latest Blog Posts</h1>
             {userData && (
-              <button
-                onClick={() => navigate('/add-post')}
-                className="bg-pink-500 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:bg-pink-600 transition-all"
-              >
-                Add New Post
-              </button>
-            )}
+  <button
+    onClick={() => navigate('/add-post')}
+    className="bg-emerald text-pureWhite font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-forestGreen focus:ring-2 focus:ring-mintGreen focus:outline-none transition duration-300"
+  >
+    Add New Post
+  </button>
+)}
+
           </div>
 
           <div className="w-full max-w-md mb-10 px-4">
