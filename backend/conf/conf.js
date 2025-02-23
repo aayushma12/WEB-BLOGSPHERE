@@ -4,4 +4,4 @@ module.exports = {
     pgPassword: 'password', // your PostgreSQL password
     pgDatabase: 'blog', // your database name
     pgPort: 5432, // default PostgreSQL port
-    jwtSecret: '7ee474f3ce33139e05362a4e21297ed057435f2b0e9ae51e9a3b2f4098c107b5dabeff91a355c23821297b1d4dd9cbeb24eceb16c09ab535e55da81d69626a79'};
+    jwtSecret: 'fe6b407bd7d8864d7bd121f5fa25fee617d85daa0998dafcd8c60732e2e6575bf3993a90002a58d62987ee7b6ffcce8f00739057f5e472e9a5df84c993fa3fc6'};
