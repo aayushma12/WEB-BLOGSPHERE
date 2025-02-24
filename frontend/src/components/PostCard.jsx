@@ -26,6 +26,10 @@ function PostCard({ post, onDelete }) {
     navigate(`/post/${post.slug}`, { state: { post } });
   };
 
+  const handleEdit = () => {
+    navigate(`/edit-post/${post.slug}`, { state: { post } });
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {post.featuredimage && (
@@ -37,29 +41,40 @@ function PostCard({ post, onDelete }) {
           />
         </div>
       )}
+
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2 text-darkBlue">{post.title}</h2>
         <p className="text-gray-700 line-clamp-3 mb-4">{post.content}</p>
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">
-            By {post.author_email || 'Unknown'}
-          </span>
-          <div className="flex gap-2">
-            <button
-              onClick={handleClick}
-              className="px-4 py-2 bg-blue text-white rounded hover:bg-deepBlue"
-            >
-              Read More
-            </button>
-            {isAuthor && (
+
+        {/* Author Section */}
+        <span className="text-sm text-gray-500 block mb-4">
+          By {post.author_email || 'Unknown'}
+        </span>
+
+        {/* Buttons Section */}
+        <div className="flex justify-start gap-2">
+          <button
+            onClick={handleClick}
+            className="px-4 py-2 bg-blue text-white rounded hover:bg-deepBlue"
+          >
+            Read More
+          </button>
+          {isAuthor && (
+            <>
+              <button
+                onClick={handleEdit}
+                className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+              >
+                Edit
+              </button>
               <button
                 onClick={handleDelete}
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
               >
                 Delete
               </button>
-            )}
-          </div>
+            </>
+          )}
         </div>
       </div>
     </div>
